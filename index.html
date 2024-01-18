@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="bootstrap.css">
+    <title>Calculator</title>
+    <style>
+        .fw-bold:hover{
+                     color: orange;
+        }
+    </style>
+</head>
+<body>
+    <div class="container mt-lg-5 mt-3 col-lg-3 col-md-5 col-10 p-4" style="box-shadow: 0 0  5px rgb(214, 213, 213)  ; border-radius: 50px; border: 1px solid orange;">
+        <div class="container mb-2 text-dack fw-bold col-lg-12 col-10 p-4 mx-auto" style="box-shadow: 0 0  5px rgb(214, 213, 213); border-radius: 20px 20px  0 0; " id="screen"></div>
+        <div class="row">
+            <div class="col  shadow-sm text-center m-2 fw-bold p-2 text-light" style=" background-color:orange;cursor: pointer; border-radius: 50%; width: 50px; height: 50px;" onclick="clearText()">Ac</div>
+            <div class="col  shadow-sm text-center m-2 fw-bold p-2 text-light" style=" background-color:orange;cursor: pointer; border-radius: 50%;  width: 50px; height: 50px;" onclick="race()">^</div>
+            <div class="col  shadow-sm text-center m-2 fw-bold p-2 text-light" style=" background-color:orange;cursor: pointer; border-radius: 50%;  width: 50px; height: 50px;" id="operator"  onclick="percent()">%</div>
+            <div class="col  shadow-sm text-center m-2 fw-bold p-2 text-light" style=" background-color:orange;cursor: pointer; border-radius: 50%;  width: 50px; height: 50px;" id="operator"  onclick="displayText('/')">÷</div>
+        </div>
+        <div class="row">
+            <div class="col  shadow-sm text-center m-2 fw-bold p-2" style="cursor: pointer; border-radius: 50%;  width: 50px; height: 50px;"  id="number7" onclick="displayText (7)">7</div>
+            <div class="col  shadow-sm text-center m-2 fw-bold p-2" style="cursor: pointer; border-radius: 50%;  width: 50px; height: 50px;"  id="number8" onclick="displayText (8)">8</div>
+            <div class="col  shadow-sm text-center m-2 fw-bold p-2" style="cursor: pointer; border-radius: 50%;  width: 50px; height: 50px;"  id="number9" onclick="displayText (9)">9</div>
+            <div class="col  shadow-sm text-center m-2 fw-bold p-2 text-light" style=" background-color:orange;cursor: pointer; border-radius: 50%;  width: 50px; height: 50px;" id="operator"  onclick="displayText('*')">×</div>
+        </div>
+        <div class="row">
+            <div class="col  shadow-sm text-center m-2 fw-bold p-2" style="cursor: pointer; border-radius: 50%;  width: 50px; height: 50px;"  id="number4" onclick="displayText (4)">4</div>
+            <div class="col  shadow-sm text-center m-2 fw-bold p-2" style="cursor: pointer; border-radius: 50%;  width: 50px; height: 50px;"  id="number5" onclick="displayText (5)">5</div>
+            <div class="col  shadow-sm text-center m-2 fw-bold p-2" style="cursor: pointer; border-radius: 50%;  width: 50px; height: 50px;"  id="number6" onclick="displayText (6)">6</div>
+            <div class="col  shadow-sm text-center m-2 fw-bold p-2 text-light" style=" background-color:orange;cursor: pointer; border-radius: 50%;  width: 50px; height: 50px;" id="operator" onclick="displayText('-')">-</div>
+        </div>
+        <div class="row">
+            <div class="col  shadow-sm text-center m-2 fw-bold p-2" style="cursor: pointer; border-radius: 50%;  width: 50px; height: 50px;"  id="number3" onclick="displayText (3)">3</div>
+            <div class="col  shadow-sm text-center m-2 fw-bold p-2" style="cursor: pointer; border-radius: 50%;  width: 50px; height: 50px;"  id="number2" onclick="displayText (2)">2</div>
+            <div class="col  shadow-sm text-center m-2 fw-bold p-2" style="cursor: pointer; border-radius: 50%;  width: 50px; height: 50px;"  id="number1" onclick="displayText (1)">1</div>
+            <div class="col  shadow-sm text-center m-2 fw-bold p-2 text-light" style=" background-color:orange;cursor: pointer; border-radius: 50%;  width: 50px; height: 50px;" id="operator"  onclick="displayText('+')">+</div>
+        </div>
+        <div class="row">
+            <div class="col  shadow-sm text-center m-2 fw-bold p-2" style="cursor: pointer; border-radius: 50%;  width: 50px; height: 50px;" id="number0" onclick="displayText (0)">0</div>
+            <div class="col  shadow-sm text-center m-2 fw-bold p-2 " style="cursor: pointer; border-radius: 50%;  width: 50px; height: 50px;" id="number." onclick="displayText ('.')">.</div>
+            <div class="col  shadow-sm text-center m-2 fw-bold p-2 " style="cursor: pointer; border-radius: 50%;  width: 50px; height: 50px;" id="operator" onclick="backspaceText ()">←</div>
+            <div class="col  shadow-sm text-center m-2 fw-bold p-2 text-light" style=" background-color:orange;cursor: pointer; border-radius: 50%;  width: 50px; height: 50px;" id="operator" onclick="calculate()">=</div>
+        </div>
+        <p class="text-center fw-bold fs-6">Movic <span style="color: orange;">Dev</span></p>
+     </div>
+     <script>
+               function displayText(text){
+                   document.getElementById('screen').innerHTML += text;
+               }
+               function clearText(){
+                   document.getElementById('screen').innerHTML = "";
+               }
+               function backspaceText(){
+                   let text = document.getElementById('screen').innerHTML
+                   newText = text.slice (0,-1)
+                   document.getElementById('screen').innerHTML = newText;
+               }
+               function calculate(){
+                   let text = document.getElementById('screen').innerHTML = eval(document.getElementById('screen').innerHTML);   
+               }
+                 function percent(){
+                   let text = document.getElementById('screen').innerHTML = eval(document.getElementById('screen').innerHTML) /100;               
+               }function race() {
+                let text = document.getElementById('screen').innerHTML = eval(document.getElementById('screen').innerHTML)**2;   
+               }
+         
+    </script>
+</body>
+</html>
